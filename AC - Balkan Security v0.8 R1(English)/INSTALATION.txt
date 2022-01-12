@@ -1,0 +1,67 @@
+===================[24.12.2011 - 17.2.2012]===================
+Credits: 
+Mihail_Vukota - Help with testing AC (on version v0.1/v0.2)
+Gamestar - AntiSwear
+Gagi_Corleone(Mr.Gagi) - Help with foreach, anti health hack and with checking animations
+[FG]Snich_Wolf - explanation of how to remove the second "OK" button
+Balkan Rising RolePlay - Testing AntiCheat-a
+www.balkan-rising.info
+PLEASE DON'T RENAME THIS ANTICHEAT !
+LET'S START...  FIRST, IN ANTICHEAT YOU CAN FIND SOMTHING LIKE /// CHANGE ME IF YOU WANT, THAT MEANS TAHT YOU CAN CHANGE THAT, LIKE MAX PING
+===================[INSTALATION]========================
+ACBS.amx PUT IN YOUR filterscripts folder, then in server.cfg write ACBS, folder AC-BS move in your scriptfiles, pawno/include move in your pwano/include
+(you must put AC_Balkan_Security include in you pawno includes) 
+Then remove #error READ INSTALATION.TXT , and continue reading this!!
+==========[ADMIN PROTECTION]==========
+In your GameMode, under OnPlayerSpawn put: SetPVarInt(playerid, "AdminProtect", 0);
+Then under your /adminduty command, when you go ON DUTY, put: SetPVarInt(playerid, "AdminProtect", 1);
+but when you go off admin duty, put SetPVarInt(playerid, "AdminProtect", 0);
+Doing that, evry time when you go on duty Admin will be protected, and anticheat cannot kick him.
+=========[OTHER MOST IMPORTNENT CHANGES]==========
+In you Game Mode, on top, put this:
+
+#include <AC_Balkan_Security>
+
+After that, command under this text, you need to change:
+
+GivePlayerMoney
+ResetPlayerMoney
+SetPlayerMoney
+SetPlayerHealth
+SetPlayerArmour
+SetPlayerPos
+SetPlayerInterior
+SetPlayerVirtualWorld
+
+Commands above this text, you MUST change in command under this text (use ctrl + h):
+
+AC_BS_GivePlayerMoney
+AC_BS_ResetPlayerMoney
+AC_BS_SetPlayerMoney
+AC_BS_SetPlayerHealth
+AC_BS_SetPlayerArmour
+AC_BS_SetPlayerPos
+AC_BS_SetPlayerInterior
+AC_BS_SetPlayerVirtualWorld
+
+
+Then in all you command what repair your vehicle, put this:
+
+SetPVarInt(playerid, "VehicleRepair", 1);
+
+Usualy there is only 1 command like that, so that won't be a problem!
+
+
+Then under public OnPlayerConnect put next:
+
+AC_BS_SetPlayerArmour(playerid, 0);
+AC_BS_SetPlayerHealth(playerid, 100);
+
+IF you din't do what is writen above, anticheat will kick for no reason!
+//=========
+
+  ||
+  ||
+  \/
+On the end, dellete in AC this text:
+#error READ INSTALATION.TXT FOR SECOND TIME
